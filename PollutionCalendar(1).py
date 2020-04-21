@@ -47,15 +47,20 @@ if __name__ == "__main__":
     labels = dt.astype(str) + labels
     #-------------------------开始绘图--------------------------#
     fig = plt.figure(figsize=(20, 8), dpi=120)
-    colors = ['#00E400', '#FEFF00', '#FE7E00', '#FC0201']
-    # bounds = [0, 50, 100, 150, 200]
+    colors = ['#00E400', '#FEFF00', '#FE7E00', '#FC0201','#871F78','#660000']
+    bounds = [0, 50, 100, 150, 200,300,500]
+
     # 好在数据是均匀分布
     cm = mpl.colors.ListedColormap(colors)
-    ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=200, cmap=cm,
-                    linewidths=0.5, linecolor='gray', cbar_kws={'pad': 0.03})
+    norm = mpl.colors.BoundaryNorm(bounds, cm.N)
+    # ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=500, cmap=cm, norm=norm,
+    #                 linewidths=0.5, linecolor='gray', cbar_kws={'pad': 0.03},square= True)
+    ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=500, cmap=cm, norm=norm,
+                    linewidths=0.5, linecolor='gray', cbar=False)
+    cb = ax.figure.colorbar(ax.collections[0]) #重新设置colorbar
     #-------------------------以防万一处理下--------------------------#
     plt.ylim(-0.5, len(dt))
-    plt.xlim(0, len(dt.columns)+0.5)
-
-    plt.show()
+    # plt.xlim(0, len(dt.columns)+0.5)
+    #
+    # plt.show()
     # plt.savefig('t.png')
