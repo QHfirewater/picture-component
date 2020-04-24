@@ -53,11 +53,13 @@ if __name__ == "__main__":
     # 好在数据是均匀分布
     cm = mpl.colors.ListedColormap(colors)
     norm = mpl.colors.BoundaryNorm(bounds, cm.N)
-    # ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=500, cmap=cm, norm=norm,
-    #                 linewidths=0.5, linecolor='gray', cbar_kws={'pad': 0.03},square= True)
+
     ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=500, cmap=cm, norm=norm,
-                    linewidths=0.5, linecolor='gray', cbar=False)
-    cb = ax.figure.colorbar(ax.collections[0]) #重新设置colorbar
+                           linewidths=0.5, linecolor='gray', cbar_kws={'ticks': bounds, 'spacing':'proportional'})
+
+    # ax = sns.heatmap(dt, annot=labels, fmt='', vmin=0, vmax=500, cmap=cm, norm=norm,
+    #                     linewidths=0.5, linecolor='gray', cbar=False)
+    # cb = ax.figure.colorbar(ax.collections[0]) #重新设置colorbar
     #-------------------------以防万一处理下--------------------------#
     plt.ylim(-0.5, len(dt))
     # plt.xlim(0, len(dt.columns)+0.5)
