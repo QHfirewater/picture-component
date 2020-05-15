@@ -8,8 +8,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams['font.sans-serif'] = ['SimHei']
-plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['font.sans-serif'] = ['SimHei'] #设置支持中文显示功能
+plt.rcParams['axes.unicode_minus'] = False #设置支持显示负数功能
 y = [12,15,11,8,12]
 x = ['lili','lucy','john','mary','frank']
 plt.bar(x,y,align='center',color = 'green')
